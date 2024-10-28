@@ -1,0 +1,31 @@
+version: '3'
+name: "wp-app"
+
+services:
+  wordpress:
+    image: wordpress:fpm-alpine
+    container_name: wordpress
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    volumes:
+      - ./html:/var/www/html
+      - ./config/php.ini:/usr/local/etc/php/conf.d/custom.ini
+    env_file: .env
+    networks:
+      - wpshop-network
+
+  mariadb:
+    image: mariadb:10.11.6-jammy
+    container_name: mariadb
+    restart: unless-stopped
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    env_file: .env
+    networks:
+      - wpshop-network
+
+networks:
+  wpshop-network:
+    name: wpshop-network
+    driver: bridge

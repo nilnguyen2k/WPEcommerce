@@ -1,0 +1,33 @@
+shop.codeguruji.net {
+	root * /var/www/html
+	
+	tls internal
+	
+	encode zstd gzip
+
+	# Serve WordPress PHP files through php-fpm:
+	php_fastcgi wordpress:9000
+
+	# Enable the static file server:
+	file_server {
+		precompressed gzip
+	}
+	
+    header / {
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		Cache-Control "public, max-age=31536000"
+	}
+}
+
+portainer.codeguruji.net {
+    reverse_proxy portainer:9000
+    
+    tls internal
+    
+    header / {
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+		Cache-Control "public, max-age=31536000"
+    }
+}

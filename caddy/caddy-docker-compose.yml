@@ -1,0 +1,25 @@
+version: '3'
+name: "caddy-server"
+
+services:
+  caddy:
+    image: caddy:2.7.6-alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data:/data
+      - ./config:/config
+      - ../wpshop/html:/var/www/html
+    networks:
+      - wpshop-network
+      - docker-network
+
+networks:
+  wpshop-network:
+    external: true
+  docker-network:
+    external: true

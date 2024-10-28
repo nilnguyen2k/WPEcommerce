@@ -1,0 +1,22 @@
+version: "3"
+name: "docker-ui"
+
+services:
+  portainer:
+    image: portainer/portainer-ce:2.20.3
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - docker-network
+
+volumes:
+  portainer_data:
+    name: portainer_data
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
