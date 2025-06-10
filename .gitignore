@@ -1,0 +1,8 @@
+# WPSHOP
+/wpshop/config
+/wpshop/html
+/wpshop/dbdata
+
+# CADDY
+/caddy/config
+/caddy/data

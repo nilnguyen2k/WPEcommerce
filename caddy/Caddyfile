@@ -1,4 +1,4 @@
-shop.codeguruji.net {
+{$SHOP_DOMAIN} {
 	root * /var/www/html
 	
 	tls internal
@@ -20,7 +20,7 @@ shop.codeguruji.net {
 	}
 }
 
-portainer.codeguruji.net {
+{$PORTAINER_DOMAIN} {
     reverse_proxy portainer:9000
     
     tls internal
