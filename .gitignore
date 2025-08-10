@@ -6,3 +6,15 @@
 # CADDY
 /caddy/config
 /caddy/data
+
+# COMMON
+.env
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+.idea/
+*.code-workspace
+node_modules/
+vendor/
